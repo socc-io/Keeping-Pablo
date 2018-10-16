@@ -8,3 +8,7 @@ DQN을 이용한 간단한 게임을 플레이 하는 인공지능
 
 https://github.com/yenchenlin/DeepLearningFlappyBird
 
+dependencies - tensorflow, opencv, pygame
+
+python main.py
+
