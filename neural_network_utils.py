@@ -55,4 +55,11 @@ def train_network_by_batch(minibatch, readout, train_step, s, a, y):
 def save_and_load_network(sess):
 
     saver = tf.train.Saver()
+    sess.run(tf.initialize_all_variables())
+    checkpoint = tf.train.get_checkpoint_state("saved_networks")
+    if checkpoint and tf.train.get__checkpoint_state("saved_networks"):
+        saver.restore(sess, checkpoint.model_checkpoint_path)
+        print("successfully loaded")
+    else:
+        print("no networks")
     return saver

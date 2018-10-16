@@ -44,19 +44,21 @@ class GameState:
 
         self.barricade.update()
         self.barricade2.update()
+
+        if self.barricade.iscrashed(self.character.location_x, self.character.location_y) or self.barricade2.iscrashed(self.character.location_x, self.character.location_y):
+            reward = -1
+            terminal = True
+            print("reward == -1")
+
+
         # check if character collides with barricade
-        # if (get_distance(self.character.location, self.terminate.location) / 1000.0) < 0.45:
-        #     reward = 0.1
+        if (get_distance(self.character.location, self.terminate.location) / 1000.0) < 0.35:
+            reward = 0.1
+            print("reward == 0.1")
 
-        # if (get_distance(self.character.location, self.terminate.location) / 1000.0) < 0.35:
-        #     reward = 0.2
-        
-        # if (get_distance(self.character.location, self.terminate.location) / 1000.0) < 0.25:
-        #     reward = 0.4
-
-        # if (get_distance(self.character.location, self.terminate.location) / 1000.0) < 0.15:
-        #     reward = 0.6
-        reward = 1 - (get_distance(self.character.location, self.terminate.location)/ 10)
+        elif (get_distance(self.character.location, self.terminate.location) / 1000.0) < 0.15:
+            reward = 0.5
+            print("reward == 0.5")
             
         if self.terminate.isCrashed(self.character.location_x, self.character.location_y):
             reward = 1000
@@ -71,13 +73,13 @@ class GameState:
         print(reward)
         
         image_data = pygame.surfarray.array3d(pygame.display.get_surface())
-        if self.timer == 1000:
+
+        if self.timer == 500:
             self.timer = 0
             terminal = True
         if not self.timer % 100:
             print("=============================================================")
-            print("Game Timer :", end = "")
-            print(self.timer)
+            print("Game Timer :{0}".format(self.timer))
         if terminal:
             self.__init__()
         pygame.display.update()
