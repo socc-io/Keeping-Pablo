@@ -10,5 +10,8 @@ https://github.com/yenchenlin/DeepLearningFlappyBird
 
 dependencies - tensorflow, opencv, pygame
 
+```
+pip install -r requirements.txt
 python main.py
+```
 
