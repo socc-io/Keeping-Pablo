@@ -15,3 +15,9 @@ pip install -r requirements.txt
 python main.py
 ```
 
+game.py 에서 frameStep마다 정의해주는 reward를 어떻게 정해주냐에 따라서 agent의 행동이 달라짐.
+현재 정책으로는 세모에 부딪치면 -1점
+
+도착지에 도착하면 1000점
+
+도착지에 얼마나 가까우냐에 따라서 2단계로 나눈뒤 1단계에 해당하면 0.1점, 2단계에 해당하면 0.5점을 부여함.
